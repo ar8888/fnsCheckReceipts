@@ -1,0 +1,4 @@
+fns.db
+build/
+dist/
+*.spec
