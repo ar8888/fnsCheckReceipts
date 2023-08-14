@@ -7,7 +7,6 @@ import time
 import os
 import re
 from decimal import Decimal
-from fractions import Fraction
 
 api = None
 
@@ -25,7 +24,9 @@ def read_data(filename, logs):
         NN = i - 1
         if sheet.cell(row=i, column=1).value == None:
             continue
-        summ = int(sheet.cell(row=i, column=1).value * 10 * 10)
+        summ_ = Decimal(str(sheet.cell(row=i, column=1).value))
+        summ_ = int(summ_ * 100)
+        summ = summ_
         date_str = str(sheet.cell(row=i, column=2).value)
         date_str = date_str[6:10]+'-'+date_str[3:5]+'-'+date_str[0:2]
         time_str = str(sheet.cell(row=i, column=3).value)
